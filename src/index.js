@@ -13,6 +13,7 @@ import { store, persistor, history } from 'store/configureStore'
 import App from './App'
 import Examples from 'scenes/Examples'
 
+import Result from 'scenes/Result'
 import Dashboard from 'scenes/Dashboard'
 import Layout from 'components/Layout'
 import Simulados from 'scenes/Exam'
@@ -35,6 +36,7 @@ ReactDOM.render(
               <Route exact path="/resposta" component={ViewAnswers} />
               <ProtectedRoute exact path="/" component={Dashboard} />
               <Route exact path="/edicao" component={Edition} />
+              <ProtectedRoute exact path="/result" component={Result} />
             </Layout>
             <Route path="*" render={() => 404} />
           </Switch>
