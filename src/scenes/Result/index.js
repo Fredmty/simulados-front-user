@@ -16,6 +16,7 @@ import Select from 'components/Select'
 import Modal from 'components/Modal'
 import './result.scss'
 import Container from 'components/Container'
+import Icon from 'components/Icon'
 import 'slick-carousel/slick/slick.scss'
 import 'slick-carousel/slick/slick-theme.scss'
 import Slider from 'react-slick'
@@ -23,7 +24,7 @@ import Slider from 'react-slick'
 class Result extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showConfirmButton: false, hits: 60, total: 80 }
+    this.state = { showQuestions: false, hits: 60, total: 80 }
   }
 
   getMessage() {
@@ -48,15 +49,15 @@ class Result extends React.Component {
         </h1>
         <h3>{this.getMessage()}</h3>
 
-        <label className="data-result">
-          Porcentagem de acertos <span>75%</span>
-        </label>
-        <label className="data-result">
-          Tempo médio por questão <span>2m20s</span>
-        </label>
-        <label className="data-result">
-          Tempo total <span>3h30s</span>
-        </label>
+        <div className="data-result data-result-border-bottom">
+          <div>Porcentagem de acertos</div> <div>75%</div>
+        </div>
+        <div className="data-result data-result-border-bottom">
+          <div>Tempo médio por questão</div> <div>2m20s</div>
+        </div>
+        <div className="data-result data-result-border-bottom">
+          <div>Tempo total</div> <div>3h30s</div>
+        </div>
 
         <br />
         <br />
@@ -64,9 +65,35 @@ class Result extends React.Component {
 
         <h3>Questões</h3>
 
-        <Card>Porcentagem de acertos 75%</Card>
-        <Card>Tempo médio por questão 2m20s</Card>
-        <Card>Tempo total 3h30s</Card>
+        <Card>
+          <div className="data-result-areas">
+            <div>Direito Civil</div>
+            <div>
+              <strong>6/7</strong>
+              <Icon name="chevron-down" />
+            </div>
+          </div>
+          <div>
+            <div>
+              Direito Civil
+              <span>
+                <Icon name="chevron-down" className="right" />
+              </span>
+            </div>
+          </div>
+        </Card>
+        <Card>
+          <div className="data-result">
+            Direito Penal
+            <Icon name="chevron-down" className="right" />
+          </div>
+        </Card>
+        <Card>
+          <div className="data-result">
+            Direito Criminal
+            <Icon name="chevron-down" className="right" />
+          </div>
+        </Card>
       </Container>
     )
   }
