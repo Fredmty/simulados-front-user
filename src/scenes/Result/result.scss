@@ -8,9 +8,22 @@
     margin: 5px 0;
   }
 
+  &-areas {
+    grid-template-columns: 75% 15% 10%;
+
+    & div:nth-child(1),
+    div:nth-child(2) {
+      padding-top: 0.3rem;
+    }
+
+    & div:nth-child(3) {
+      padding-top: 0.1rem;
+      text-align: right;
+    }
+  }
+
   & div:nth-child(2) {
     text-align: right;
-    vertical-align: top;
   }
 }
 .card {
@@ -19,14 +32,4 @@
   -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.75);
   -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.75);
   box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.75);
-}
-
-.green {
-  color: #629c44;
-}
-.yellow {
-  color: #ffb540;
-}
-.red {
-  color: #e61610;
 }

@@ -1,0 +1,13 @@
+.score {
+  padding: 0 !important;
+
+  &-green {
+    color: #629c44;
+  }
+  &-yellow {
+    color: #ffb540;
+  }
+  &-red {
+    color: #e61610;
+  }
+}
