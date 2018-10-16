@@ -20,16 +20,13 @@
       padding-top: 0.1rem;
       text-align: right;
     }
+
+    & .icon {
+      cursor: pointer;
+    }
   }
 
   & div:nth-child(2) {
     text-align: right;
   }
-}
-.card {
-  margin-bottom: 20px;
-  border-radius: 0;
-  -webkit-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.75);
-  -moz-box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.75);
-  box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.75);
 }

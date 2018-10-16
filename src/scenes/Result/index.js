@@ -12,14 +12,73 @@ import Icon from 'components/Icon'
 import 'slick-carousel/slick/slick.scss'
 import 'slick-carousel/slick/slick-theme.scss'
 import Score from 'components/Score'
+import CardQuestion from 'components/CardQuestion'
 
 class Result extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { showQuestions: false }
+  }
+
+  getPercent() {
+    return (this.state.hits / this.state.total) * 100
+  }
+
+  getTotalTime() {
+    let time = this.state.time
+    let final = ''
+    while (time > 0) {
+      if (time > 3600) {
+        final += Math.trunc(time / 3600) + 'h'
+        time = time % 3600
+      }
+      if (time > 60) {
+        final += Math.trunc(time / 60) + 'm'
+        time = time % 60
+      }
+      return final + time + 's'
+    }
+  }
+
+  getQuestionTime() {
+    let time = this.state.time / this.state.total
+    let final = ''
+    while (time > 0) {
+      if (time > 3600) {
+        final += Math.trunc(time / 3600) + 'h'
+        time = time % 3600
+      }
+      if (time > 60) {
+        final += Math.trunc(time / 60) + 'm'
+        time = time % 60
+      }
+      return final + Math.trunc(time) + 's'
+    }
   }
 
   render() {
+    const areas = [
+      {
+        id: 1,
+        name: 'Direito Civil',
+        questions: [
+          { id: 1, correct: true },
+          { id: 2, correct: false },
+          { id: 3, correct: true },
+          { id: 4, correct: false },
+        ],
+      },
+      {
+        id: 2,
+        name: 'Direito Criminal',
+        questions: [
+          { id: 1, correct: true },
+          { id: 2, correct: false },
+          { id: 3, correct: true },
+          { id: 4, correct: false },
+        ],
+      },
+    ]
+
     return (
       <Container>
         <Score title={true} hits={60} total={80} />
@@ -40,17 +99,9 @@ class Result extends React.Component {
 
         <h3>Questões</h3>
 
-        <Card>
-          <div className="data-result data-result-areas">
-            <div>Direito Civil</div>
-            <div>
-              <Score hits={6} total={7} />
-            </div>
-            <div>
-              <Icon name="chevron-down" />
-            </div>
-          </div>
-        </Card>
+        {areas.map(area => (
+          <CardQuestion key={area.id} area={area} />
+        ))}
       </Container>
     )
   }
