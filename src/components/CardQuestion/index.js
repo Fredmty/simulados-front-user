@@ -5,8 +5,8 @@ import Score from '../Score'
 import './cardQuestion.scss'
 
 export default class CardQuestion extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = { toogleArea: false }
   }
 
@@ -17,17 +17,20 @@ export default class CardQuestion extends Component {
 
   render() {
     const { area } = this.props
-
     return (
       <Card
         className={this.state.toogleArea ? 'card-expanded' : ''}
         onClick={this.showQuestions.bind(this)}
       >
         <div className="data-result data-result-areas">
-          <div>{area.name}</div>
+          <div>{area.subAreaName}</div>
           <div>
             <Score
-              hits={area.questions.filter(q => q.correct).length}
+              hits={
+                area.questions.filter(q => {
+                  if (q) return q.correct
+                }).length
+              }
               total={area.questions.length}
             />
           </div>
@@ -38,15 +41,18 @@ export default class CardQuestion extends Component {
           </div>
         </div>
         <div className="toggleQuestions">
-          {area.questions.map(q => (
-            <div
-              key={`${area.id}-${q.id}`}
-              className="data-result data-result-border-bottom"
-            >
-              <div>Questão {q.id}</div>
-              <div>{q.correct ? 'V' : 'X'}</div>
-            </div>
-          ))}
+          {area.questions.map((q, index) => {
+            if (q)
+              return (
+                <div
+                  key={`${index}question-${q.id}`}
+                  className="data-result data-result-border-bottom"
+                >
+                  <div>Questão {q.id}</div>
+                  <div>{q.correct ? 'V' : 'X'}</div>
+                </div>
+              )
+          })}
         </div>
       </Card>
     )

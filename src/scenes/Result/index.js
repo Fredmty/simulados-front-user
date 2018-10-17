@@ -5,6 +5,9 @@ import { connect } from 'react-redux'
 
 import { growl } from 'store/ui/actions'
 
+import { fetchResult } from 'store/result/actions'
+import { getResult } from 'store/result'
+
 import Card from 'components/Card'
 import './result.scss'
 import Container from 'components/Container'
@@ -17,6 +20,10 @@ import CardQuestion from 'components/CardQuestion'
 class Result extends React.Component {
   constructor(props) {
     super(props)
+  }
+
+  componentDidMount() {
+    this.props.fetchResult(3) //this.props.participationId
   }
 
   getPercent() {
@@ -56,29 +63,8 @@ class Result extends React.Component {
   }
 
   render() {
-    const areas = [
-      {
-        id: 1,
-        name: 'Direito Civil',
-        questions: [
-          { id: 1, correct: true },
-          { id: 2, correct: false },
-          { id: 3, correct: true },
-          { id: 4, correct: false },
-        ],
-      },
-      {
-        id: 2,
-        name: 'Direito Criminal',
-        questions: [
-          { id: 1, correct: true },
-          { id: 2, correct: false },
-          { id: 3, correct: true },
-          { id: 4, correct: false },
-        ],
-      },
-    ]
-
+    console.log('>>>>>>>>>')
+    console.log(this.props)
     return (
       <Container>
         <Score title={true} hits={60} total={80} />
@@ -99,20 +85,25 @@ class Result extends React.Component {
 
         <h3>Questões</h3>
 
-        {areas.map(area => (
-          <CardQuestion key={area.id} area={area} />
-        ))}
+        {this.props.data.result.map((area, index) => {
+          if (area)
+            return <CardQuestion key={`list-area-${index}`} area={area} />
+        })}
       </Container>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  data: getResult(state),
+})
+
 export default connect(
-  null,
+  mapStateToProps,
   dispatch =>
     bindActionCreators(
       {
-        growl,
+        fetchResult,
       },
       dispatch,
     ),
