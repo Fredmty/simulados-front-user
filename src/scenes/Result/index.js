@@ -63,8 +63,6 @@ class Result extends React.Component {
   }
 
   render() {
-    console.log('>>>>>>>>>')
-    console.log(this.props)
     return (
       <Container>
         <Score title={true} hits={60} total={80} />
@@ -85,10 +83,9 @@ class Result extends React.Component {
 
         <h3>Questões</h3>
 
-        {this.props.data.result.map((area, index) => {
-          if (area)
-            return <CardQuestion key={`list-area-${index}`} area={area} />
-        })}
+        {this.props.data.result.map((area, index) => (
+          <CardQuestion key={`list-area-${index}`} area={area} />
+        ))}
       </Container>
     )
   }

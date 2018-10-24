@@ -26,11 +26,7 @@ export default class CardQuestion extends Component {
           <div>{area.subAreaName}</div>
           <div>
             <Score
-              hits={
-                area.questions.filter(q => {
-                  if (q) return q.correct
-                }).length
-              }
+              hits={area.questions.filter(q => q.correct).length}
               total={area.questions.length}
             />
           </div>
@@ -41,18 +37,15 @@ export default class CardQuestion extends Component {
           </div>
         </div>
         <div className="toggleQuestions">
-          {area.questions.map((q, index) => {
-            if (q)
-              return (
-                <div
-                  key={`${index}question-${q.id}`}
-                  className="data-result data-result-border-bottom"
-                >
-                  <div>Questão {q.id}</div>
-                  <div>{q.correct ? 'V' : 'X'}</div>
-                </div>
-              )
-          })}
+          {area.questions.map((q, index) => (
+            <div
+              key={`${index}question-${q.id}`}
+              className="data-result data-result-border-bottom"
+            >
+              <div>Questão {q.id}</div>
+              <div>{q.correct ? 'V' : 'X'}</div>
+            </div>
+          ))}
         </div>
       </Card>
     )
