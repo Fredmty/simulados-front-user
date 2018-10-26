@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 
 import { fetchResult } from 'store/result/actions'
 import { getResult } from 'store/result'
+import { getParticipationId } from 'store/exam'
 
 import './result.scss'
 import Container from 'components/Container'
@@ -23,7 +24,7 @@ class Result extends React.Component {
 
   componentDidMount() {
     this.props
-      .fetchResult(this.props.participationId) //for test, use 1, 2 or 3
+      .fetchResult(this.props.participationId)
       .then(this.extractData.bind(this))
   }
 
@@ -44,7 +45,7 @@ class Result extends React.Component {
   }
 
   getPercent() {
-    return (this.state.hits / this.state.total) * 100
+    return Math.round((this.state.hits / this.state.total) * 100, 2)
   }
 
   getTime(time) {
@@ -97,6 +98,7 @@ class Result extends React.Component {
 
 const mapStateToProps = state => ({
   data: getResult(state),
+  participationId: getParticipationId(state),
 })
 
 export default connect(
