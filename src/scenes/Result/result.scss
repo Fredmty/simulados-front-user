@@ -1,11 +1,19 @@
 .data-result {
   display: grid;
   text-align: left;
+
   &-border-bottom {
-    grid-template-columns: 75% 25%;
     border-bottom: 1px solid #e8e8e8;
     padding: 5px 0;
     margin: 5px 0;
+  }
+
+  &-statistics {
+    grid-template-columns: 75% 25%;
+  }
+
+  &-questions {
+    grid-template-columns: 75% 15% 10%;
   }
 
   &-areas {
@@ -26,7 +34,15 @@
     }
   }
 
-  & div:nth-child(2) {
+  & div:nth-child(2),
+  div:nth-child(3) {
     text-align: right;
   }
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
 }

@@ -3,7 +3,9 @@ import { handleActions } from 'redux-actions'
 import { resultLoaded } from './actions'
 import { userLogout } from '../user/actions'
 
-const initialState = {}
+const initialState = {
+  result: {},
+}
 
 const reducer = handleActions(
   {
