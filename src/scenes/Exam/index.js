@@ -2,6 +2,7 @@ import React from 'react'
 
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { push } from 'connected-react-router'
 
 import {
   fetchQuestion,
@@ -89,6 +90,9 @@ class Exam extends React.Component {
                   {this.state.showConfirmButton && (
                     <Button>Confirma Resposta</Button>
                   )}
+                  <Button onClick={() => this.props.push('/result')}>
+                    Ver Resultado
+                  </Button>
                 </footer>
               </div>
             )
@@ -114,6 +118,7 @@ export default connect(
         fetchQuestion,
         fetchMoreQuestion,
         answerQuestion,
+        push,
       },
       dispatch,
     ),
