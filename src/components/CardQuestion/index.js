@@ -42,7 +42,7 @@ export default class CardQuestion extends Component {
               key={`${index}question-${q.id}`}
               className="data-result data-result-border-bottom data-result-questions"
             >
-              <div>Questão {q.id}</div>
+              <div>Questão {q.question_id}</div>
               <div>
                 <Icon
                   name={q.correct ? 'check' : 'x'}
