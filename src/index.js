@@ -36,7 +36,7 @@ ReactDOM.render(
               <Route exact path="/resposta" component={ViewAnswers} />
               <ProtectedRoute exact path="/" component={Dashboard} />
               <Route exact path="/edicao" component={Edition} />
-              <ProtectedRoute exact path="/result" component={Result} />
+              <ProtectedRoute exact path="/resultado" component={Result} />
             </Layout>
             <Route path="*" render={() => 404} />
           </Switch>

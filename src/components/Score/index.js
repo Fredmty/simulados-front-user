@@ -20,16 +20,14 @@ class Score extends React.Component {
   render() {
     const { title, hits, total } = this.props
 
-    const Elem = title ? 'h1' : 'strong'
-    const SubTitle = () =>
-      title ? <h3>{this.getMessage(hits, total)}</h3> : ''
+    const Elem = title ? 'h1' : 'strong';
 
     return (
       <div className="score">
         <Elem className={this.getClass(hits, total)}>
           {hits}/{total}
         </Elem>
-        <SubTitle />
+        {title && <h3>{this.getMessage(hits, total)}</h3>}
       </div>
     )
   }

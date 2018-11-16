@@ -11,6 +11,7 @@ import './result.scss'
 import Container from 'components/Container'
 import Score from 'components/Score'
 import CardQuestion from 'components/CardQuestion'
+import { throws } from 'assert';
 
 class Result extends React.Component {
   constructor(props) {
@@ -19,22 +20,23 @@ class Result extends React.Component {
       total: 0,
       time: 0,
       hits: 0,
+      display: []
     }
   }
 
   componentDidMount() {
     this.props
       .fetchResult(this.props.participationId)
-      .then(this.extractData.bind(this))
+      .then(this.extractData)
   }
 
-  extractData() {
+  extractData = () => {
     if (this.props.data.result) {
       let total = 0
       let time = 0
       let hits = 0
 
-      this.props.data.result.map(r => {
+      this.props.data.result.forEach(r => {
         time += r.total_time
         hits += r.questions.filter(q => q.correct).length
         total += r.questions.length
@@ -55,6 +57,14 @@ class Result extends React.Component {
     let seconds = time % 60
 
     return `${hours}h${minutes}m${seconds}s`
+  }
+
+  toggleQuestions = (index) => {
+    const exist = this.state.display.indexOf(index) !== -1;
+
+    const display = exist ? this.state.display.filter(i => i !== index) : [...this.state.display, index];
+
+    this.setState({ display });
   }
 
   render() {
@@ -85,14 +95,16 @@ class Result extends React.Component {
             key={`list-area-${index}`}
             area={area}
             getTime={this.getTime}
+            toogleArea={this.state.display.indexOf(index) > 0}
+            onClick={this.toggleQuestions(index)}
           />
         ))}
       </Container>
     ) : (
-      <Container className="error">
-        Ops! Ocorreu um arro ao buscar o resultado.
+        <Container className="error">
+          Ops! Ocorreu um arro ao buscar o resultado.
       </Container>
-    )
+      )
   }
 }
 

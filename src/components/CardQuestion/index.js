@@ -2,25 +2,12 @@ import React, { Component } from 'react'
 import Card from '../Card'
 import Icon from '../Icon'
 import Score from '../Score'
-import './cardQuestion.scss'
+import './card-question.scss'
 
-export default class CardQuestion extends Component {
-  constructor(props) {
-    super(props)
-    this.state = { toogleArea: false }
-  }
-
-  showQuestions() {
-    let invert = !this.state.toogleArea
-    this.setState({ toogleArea: invert })
-  }
-
-  render() {
-    const { area, getTime } = this.props
-    return (
+const CardQuestion = ({ area, getTime, toogleArea, onClick }) => (
       <Card
-        className={'card-question' + this.state.toogleArea ? 'card-question--expanded' : ''}
-        onClick={this.showQuestions.bind(this)}
+        className={'card-question' + toogleArea ? 'card-question--expanded' : ''}
+        onClick={onClick}
       >
         <div className="data-result data-result--areas">
           <div>{area.name}</div>
@@ -32,11 +19,11 @@ export default class CardQuestion extends Component {
           </div>
           <div>
             <Icon
-              name={this.state.toogleArea ? 'chevron-up' : 'chevron-down'}
+              name={toogleArea ? 'chevron-up' : 'chevron-down'}
             />
           </div>
         </div>
-        <div className="card-question_toggleQuestions">
+        <div className="card-question_toggle-questions">
           {area.questions.map((q, index) => (
             <div
               key={`${index}question-${q.id}`}
@@ -55,5 +42,5 @@ export default class CardQuestion extends Component {
         </div>
       </Card>
     )
-  }
-}
+
+export default CardQuestion
