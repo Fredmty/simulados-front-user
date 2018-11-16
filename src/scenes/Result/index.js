@@ -62,14 +62,14 @@ class Result extends React.Component {
       <Container>
         <Score title={true} hits={this.state.hits} total={this.state.total} />
 
-        <div className="data-result data-result-border-bottom data-result-statistics">
+        <div className="data-result data-result--border-bottom data-result--statistics">
           <div>Porcentagem de acertos</div> <div>{this.getPercent()}%</div>
         </div>
-        <div className="data-result data-result-border-bottom data-result-statistics">
+        <div className="data-result data-result--border-bottom data-result--statistics">
           <div>Tempo médio por questão</div>{' '}
           <div>{this.getTime(this.state.time)}</div>
         </div>
-        <div className="data-result data-result-border-bottom data-result-statistics">
+        <div className="data-result data-result--border-bottom data-result--statistics">
           <div>Tempo total</div>{' '}
           <div>{this.getTime(this.state.time / this.state.total)}</div>
         </div>

@@ -12,9 +12,9 @@ class Score extends React.Component {
 
   getClass(hits, total) {
     let score = total / 2
-    if (hits > score) return 'score-green'
-    if (hits == score) return 'score-yellow'
-    if (hits < score) return 'score-red'
+    if (hits > score) return 'score--green'
+    if (hits == score) return 'score--yellow'
+    if (hits < score) return 'score--red'
   }
 
   render() {

@@ -19,10 +19,10 @@ export default class CardQuestion extends Component {
     const { area, getTime } = this.props
     return (
       <Card
-        className={this.state.toogleArea ? 'card-expanded' : ''}
+        className={'card-question' + this.state.toogleArea ? 'card-question--expanded' : ''}
         onClick={this.showQuestions.bind(this)}
       >
-        <div className="data-result data-result-areas">
+        <div className="data-result data-result--areas">
           <div>{area.name}</div>
           <div>
             <Score
@@ -36,11 +36,11 @@ export default class CardQuestion extends Component {
             />
           </div>
         </div>
-        <div className="toggleQuestions">
+        <div className="card-question_toggleQuestions">
           {area.questions.map((q, index) => (
             <div
               key={`${index}question-${q.id}`}
-              className="data-result data-result-border-bottom data-result-questions"
+              className="data-result data-result--border-bottom data-result--questions"
             >
               <div>Questão {q.question_id}</div>
               <div>

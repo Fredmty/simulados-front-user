@@ -1,13 +1,13 @@
 .score {
   padding: 0 !important;
 
-  &-green {
+  &--green {
     color: #629c44;
   }
-  &-yellow {
+  &--yellow {
     color: #ffb540;
   }
-  &-red {
+  &--red {
     color: #e61610;
   }
 }

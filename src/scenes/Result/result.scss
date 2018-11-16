@@ -2,21 +2,21 @@
   display: grid;
   text-align: left;
 
-  &-border-bottom {
+  &--border-bottom {
     border-bottom: 1px solid #e8e8e8;
     padding: 5px 0;
     margin: 5px 0;
   }
 
-  &-statistics {
+  &--statistics {
     grid-template-columns: 75% 25%;
   }
 
-  &-questions {
+  &--questions {
     grid-template-columns: 75% 15% 10%;
   }
 
-  &-areas {
+  &--areas {
     grid-template-columns: 75% 15% 10%;
 
     & div:nth-child(1),
