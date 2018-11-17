@@ -15,17 +15,17 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        <h1>Seja bem-vindo.</h1>
-        <h6 className="dashboard__description">
-          Existem diversas formas de se preparar para a prova. Selecione uma
-          destas abaixo para darmos inicio.
-        </h6>
+        <h1>Seja bem-vindo!</h1>
+        <h5 className="dashboard__description">
+          Existem diversas formas de se preparar para a prova de exame da ordem.
+          Selecione uma destas opções abaixo para dar inicio aos seus estudos.
+        </h5>
         <div className="space-between-m">
           <MenuCard
             iconContainerColor="#EAF7E8"
             iconColor="#41C236"
             icon="clipboard"
-            label="Simular Prova"
+            label="Responda um Exame Oficial"
             buttonLabel="Iniciar"
             description="Selecione e execute uma prova dos anos anteriores"
             onClick={() => this.doExam()}
@@ -34,12 +34,32 @@ class Dashboard extends Component {
             iconContainerColor="#FFD7D7"
             iconColor="#FE8184"
             icon="shuffle"
-            label="Perguntas Aleatórias"
+            label="Exame Aleatório"
             buttonLabel="Iniciar"
             description="Prova com perguntas aleatórias de qualquer categoria."
             onClick={() => this.doRandomExam()}
           />
           <MenuCard
+            iconContainerColor="#AEBAf9"
+            iconColor="#5E69F5"
+            icon="folder-minus"
+            label="Meus Exames"
+            buttonLabel="Iniciar"
+            description="Meus exames realizados e exames não concluidos."
+            onClick={() => ''}
+          />
+
+          <MenuCard
+            iconContainerColor="#F2F2F2"
+            iconColor="#787878"
+            icon="edit"
+            label="Monte seu Exame"
+            buttonLabel="Iniciar"
+            description="Personalize seu exame escolhendo as áreas de sua preferência."
+            onClick={() => ''}
+          />
+
+          {/* <MenuCard
             iconContainerColor="#AEBAf9"
             iconColor="#5E69F5"
             icon="clipboard"
@@ -56,7 +76,7 @@ class Dashboard extends Component {
             buttonLabel="Iniciar"
             description="Prova com categorias escolhidas por você."
             onClick={() => this.doCustomExam()}
-          />
+          /> */}
         </div>
       </div>
     )
